@@ -185,14 +185,11 @@ func LoadConfig(filename string) (*Config, error) {
 			}
 		}
 
-		files := StringList{}
 		for _, m := range matches {
-			if !files.Has(m) {
-				files = append(files, m)
+			if !cfg.SchemaFilename.Has(m) {
+				cfg.SchemaFilename = append(cfg.SchemaFilename, m)
 			}
 		}
-
-		cfg.SchemaFilename = files
 	}
 
 	models := make(config.TypeMap)
